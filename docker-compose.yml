@@ -1,0 +1,17 @@
+services:
+  lab1_ghidra:
+    hostname: ${HOSTNAME}
+    environment:
+      - MAXMEM=4G
+      - DISPLAY=$DISPLAY
+    image: "${LOCAL_AUTHOR}/ghidra:latest"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${LAB_LOCATION}:/repos/lab1:ro
+      - ${LAB_SRC_LOCATION}:/repos/lab1_sln:rw
+      - $HOME/.Xauthority:/root/.Xauthority
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
