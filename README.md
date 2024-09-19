@@ -20,7 +20,7 @@ LAB_SRC_LOCATION=<Location where you want to put your Ghidra Project>
 ```
 run: <br/>
 ```
-docker compose -p eel5934_tuba -f docker-compose.yml up -d
+docker compose -p eel5934_tuba -f docker-compose.yml run --cap-add=SYS_PTRACE --rm -d lab1_ghidra
 ```
 
 ## Destroying the Container
