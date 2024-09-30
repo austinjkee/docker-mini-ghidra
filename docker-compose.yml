@@ -11,8 +11,28 @@ services:
     image: "${LOCAL_AUTHOR}/ghidra:latest"
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ${LAB_LOCATION}:/repos/lab1:ro
-      - ${LAB_SRC_LOCATION}:/repos/lab1_sln:rw
+      - ${LAB1_LOCATION}:/repos/lab1:ro
+      - ${LAB1_SRC_LOCATION}:/repos/lab1_sln:rw
+      - $HOME/.Xauthority:/root/.Xauthority
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+  lab2_ghidra:
+    hostname: ${HOSTNAME}
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_PTRACE
+    environment:
+      - MAXMEM=4G
+      - DISPLAY=$DISPLAY
+    image: "${LOCAL_AUTHOR}/ghidra:latest"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${LAB2_LOCATION}:/repos/lab1:ro
+      - ${LAB2_SRC_LOCATION}:/repos/lab1_sln:rw
       - $HOME/.Xauthority:/root/.Xauthority
     deploy:
       resources:
