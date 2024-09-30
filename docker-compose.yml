@@ -31,8 +31,8 @@ services:
     image: "${LOCAL_AUTHOR}/ghidra:latest"
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ${LAB2_LOCATION}:/repos/lab1:ro
-      - ${LAB2_SRC_LOCATION}:/repos/lab1_sln:rw
+      - ${LAB2_LOCATION}:/repos/lab2:ro
+      - ${LAB2_SRC_LOCATION}:/repos/lab2_sln:rw
       - $HOME/.Xauthority:/root/.Xauthority
     deploy:
       resources:
